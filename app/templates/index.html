@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hello, {{ user.username }}</h1>
+    {% for stock in stocks %}
+    <div>
+        <p>
+        {{stock.company.name}} status:
+            <b>
+                {{ stock.body }}
+            </b>
+        </p>
+    </div>
+    {% endfor %}
+{% endblock %}

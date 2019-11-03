@@ -1,0 +1,14 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - hijack_moise</title>
+        {% else %}
+        <title>Welcome to hijack_moise</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>hijack_moise: <a href="/index">Home</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
