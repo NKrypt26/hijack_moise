@@ -12,23 +12,48 @@
             }
             .middle-div {
                 position: absolute;
+                height: auto;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
             }
+            .button1{
+                background-color: darkorange;
+                border: none;
+                padding: 8px 10px;
+                text-align: center;
+                color: white;
+            }
+            .button1:hover{
+               background-color: orange;
+            }
         </style>
+        <script>
+            function addParams() {
+                const newNode = document.getElementsByClassName("params")[0].cloneNode(true);
+                document.getElementById("params-container").appendChild(newNode)
+            }
+        </script>
     </head>
     <body>
         <div class="row justify-content-center nav">
             <h3>The Sights and Sounds of the Stock Market</h3>
         </div>
         <div class="middle-div">
-            <h6 style="text-align: center">Select a company</h6>
             <form method="GET">
-                <select>
-                    <option value="Amazon">Amazon</option>
-                </select>
-                <button type="submit">Submit</button>
+            <div id="params-container">
+                <div class="params">
+                    <select>
+                    {% for company in companies %}
+                    <option value='{{company.name}}' name='{{company.name}}'>{{ company.name }}</option>
+                    {% endfor %}
+                    </select>
+                    <input type="number">
+                    <br>
+                </div>
+            </div>
+            <button class="button1" id="add-params" onClick="addParams()" type="button">+</button>
+            <button class="button1" type="submit">Submit</button>
             </form>
         </div>
         <nav class="fixed-bottom justify-content-center nav">

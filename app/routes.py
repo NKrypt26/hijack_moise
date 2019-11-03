@@ -25,7 +25,11 @@ def index():
 
 @app.route('/trends')
 def trends():
-    return render_template("market_trends.html")
+    companies = [{
+        'name': 'Amazon',
+        'body': "Amazon's stocks are booming!"
+    }]
+    return render_template("market_trends.html", companies=companies)
 
 
 @app.route('/')
