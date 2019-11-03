@@ -23,6 +23,11 @@ def index():
     return render_template('index.html', title='', user=user, stocks=stocks)
 
 
+@app.route('/trends')
+def trends():
+    return render_template("market_trends.html")
+
+
 @app.route('/')
 def marquee():
     auth_data = {
@@ -42,14 +47,13 @@ def marquee():
     # update session headers with access token
     session.headers.update({"Authorization": "Bearer " + access_token})
 
-    request_url = "https://api.marquee.gs.com/v1/data/USCANFPP_MINI/query"
+    request_url = "https://api.marquee.gs.com/v1/assets/data/query"
 
     request_query = {
         "where": {
             "gsid": ["75154", "193067", "194688", "902608", "85627"]
         },
-        "startDate": "2017-01-15",
-        "endDate": "2018-01-15"
+        "fields": ["name"]
     }
 
     request = session.post(url=request_url, json=request_query)
